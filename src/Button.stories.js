@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import { Button } from './Button';
 import { Icon } from './Icon';
 import { StoryLinkWrapper } from './StoryLinkWrapper';
+import { userEvent, within } from '@storybook/testing-library';
+import { expect } from '@storybook/jest';
 
 const CustomButton = styled.button`
   border: 1px solid green;
@@ -288,5 +290,23 @@ export const AnchorWrapper = (args) => (
     </Button>
   </div>
 );
+
+export const WithInteractions = (args) => <Button {...args} />;
+WithInteractions.args = {
+   appearance: 'primary',
+   href: 'http://storybook.js.org',
+   ButtonWrapper: StoryLinkWrapper,
+   children: 'Button',
+ };
+
+ WithInteractions.play = async ({ canvasElement }) => {
+  // Assigns canvas to the component root element
+   const canvas = within(canvasElement);
+   await userEvent.click(canvas.getByRole('link'));
+   expect(canvas.getByRole('link')).toHaveAttribute(
+     'href',
+     'http://storybook.js.org',
+    );
+ };
 
 AnchorWrapper.storyName= 'anchor wrapper';

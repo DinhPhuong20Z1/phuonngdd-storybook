@@ -1,7 +1,7 @@
 {
-  "name": "learnstorybook-design-system-template",
+  "name": "phuongdd-storybook",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
@@ -15,12 +15,13 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "build": "cross-env BABEL_ENV=production babel src -d dist",
+    "test-storybook": "test-storybook",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public",
-    "chromatic": "npx chromatic --project-token=d86d860e9359"
+    "chromatic": "npx chromatic --project-token=d86d860e9359",
+    "build-storybook-docs": "build-storybook  --docs"
   },
   "eslintConfig": {
     "extends": [
@@ -38,7 +39,16 @@
       }
     ]
   },
-  "babel": {},
+  "babel": {
+    "presets": [
+      [
+        "react-app",
+        {
+          "absoluteRuntime": false
+        }
+      ]
+    ]
+  },
   "browserslist": {
     "production": [
       ">0.2%",
@@ -52,18 +62,30 @@
     ]
   },
   "devDependencies": {
+    "@babel/cli": "^7.18.10",
     "@babel/preset-typescript": "^7.18.6",
+    "@storybook/addon-a11y": "^6.5.12",
     "@storybook/addon-actions": "^6.5.12",
     "@storybook/addon-essentials": "^6.5.12",
     "@storybook/addon-interactions": "^6.5.12",
     "@storybook/addon-links": "^6.5.12",
     "@storybook/builder-webpack4": "^6.5.12",
+    "@storybook/jest": "^0.0.10",
     "@storybook/manager-webpack4": "^6.5.12",
     "@storybook/node-logger": "^6.5.12",
     "@storybook/preset-create-react-app": "^3.2.0",
     "@storybook/react": "^6.5.12",
+    "@storybook/test-runner": "^0.7.2",
     "@storybook/testing-library": "^0.0.13",
+    "auto": "^10.37.6",
     "chromatic": "^6.9.0",
+    "cross-env": "^7.0.3",
+    "jest": "27",
     "prettier": "^2.7.1"
-  }
+  },
+  "description": "Storybook design systems tutorial",
+  "main": "index.js",
+  "repository": "https://github.com/DinhPhuong20Z1/phuonngdd-storybook.git",
+  "author": "phuongdd2001@gmail.com",
+  "license": "MIT"
 }
