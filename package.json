@@ -84,7 +84,7 @@
     "prettier": "^2.7.1"
   },
   "description": "Storybook design systems tutorial",
-  "main": "index.js",
+  "main": "dist/index.js",
   "repository": "https://github.com/DinhPhuong20Z1/phuonngdd-storybook.git",
   "author": "phuongdd2001@gmail.com",
   "license": "MIT"
